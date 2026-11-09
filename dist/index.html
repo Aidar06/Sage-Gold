@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1e7">
+  <meta name="description" content="Свадебное приглашение">
+  <title>Свадебное приглашение</title>
+  <link rel="preload" href="assets/fonts/cormorant-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/backgrounds/bg-01.jpg" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#invitationSection">Перейти к приглашению</a>
+
+  <div class="status-screen" id="statusScreen" role="status" aria-live="polite">
+    <div class="status-card">
+      <svg class="status-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 4 74 15 96 37 85 63 63 85 37 96 15 74 4 50 15 26 37 4Z"/>
+        <path d="M50 12 69 22 88 41 78 61 59 80 39 88 20 69 12 50 22 31 41 12Z"/>
+      </svg>
+      <p class="eyebrow" id="statusEyebrow">Свадебное приглашение</p>
+      <h1 id="statusTitle">Загружаем приглашение…</h1>
+      <button class="outline-button" id="retryButton" type="button" hidden>Попробовать снова</button>
+    </div>
+  </div>
+
+  <div class="site" id="site" hidden>
+    <main>
+      <section class="hero paper-section paper-section--first" style="--bg:url('assets/backgrounds/bg-01.jpg')">
+        <div class="hero-frame reveal">
+          <div class="hero-content">
+            <div class="monogram" aria-hidden="true">
+              <svg viewBox="0 0 120 120"><path d="M60 4 87 15 110 39 116 67 99 95 71 114 40 109 15 88 4 59 16 32 38 10Z"/><path d="M60 13 82 21 102 42 108 65 93 89 68 105 43 101 23 84 13 59 23 37 42 19Z"/></svg>
+              <span id="monogramLetters"></span>
+            </div>
+            <p class="eyebrow" data-ui="weddingLabel">Приглашение на свадьбу</p>
+            <h1 class="hero-names"><span id="groomName"></span><i>&amp;</i><span id="brideName"></span></h1>
+            <div class="gold-divider" aria-hidden="true"><span></span><b>◆</b><span></span></div>
+            <p class="hero-date" id="heroDate"></p>
+          </div>
+          <a class="scroll-cue" href="#invitationSection"><span data-ui="scroll">Листайте вниз</span><b>⌄</b></a>
+        </div>
+      </section>
+
+      <section class="invitation paper-section" id="invitationSection" style="--bg:url('assets/backgrounds/bg-02.jpg')">
+        <div class="narrow-card reveal">
+          <p class="eyebrow" data-ui="dearLabel">Для самых близких</p>
+          <h2 class="display-title" id="invitationTitle"></h2>
+          <p class="body-copy preserve-lines" id="invitationText"></p>
+          <p class="script-signature" id="invitationSignature"></p>
+        </div>
+      </section>
+
+      <section class="wish paper-section" id="wishSection" style="--bg:url('assets/backgrounds/bg-03.jpg')" hidden>
+        <div class="ornament-card reveal">
+          <svg class="leaf-ornament" viewBox="0 0 220 90" aria-hidden="true">
+            <path d="M15 72C70 66 113 39 160 13"/><path d="M55 57c-10-17-22-20-35-16 9 13 19 19 35 16Zm34-16c-5-18-15-25-29-25 5 15 13 23 29 25Zm35-19c3-17-4-27-17-32-1 15 4 25 17 32Zm-64 34c7 17 18 22 32 19-7-14-16-21-32-19Zm38-19c10 15 23 18 35 12-10-12-21-17-35-12Zm38-19c13 12 26 11 37 2-13-9-25-11-37-2Z"/>
+          </svg>
+          <p class="eyebrow" data-ui="wishLabel">С заботой о деталях</p>
+          <h2 class="display-title" id="wishTitle"></h2>
+          <p class="body-copy preserve-lines" id="wishText"></p>
+        </div>
+      </section>
+
+      <section class="date-section paper-section" id="dateSection" style="--bg:url('assets/backgrounds/bg-04.jpg')">
+        <div class="date-layout reveal">
+          <div class="date-copy">
+            <p class="eyebrow" data-ui="dateLabel">Сохраните эту дату</p>
+            <p class="date-number" id="dateDay"></p>
+            <h2 id="dateMonth"></h2>
+            <p class="date-year" id="dateYear"></p>
+            <p class="date-time" id="dateTime"></p>
+          </div>
+          <div class="calendar-card" aria-label="Календарь">
+            <div class="calendar-heading"><span id="calendarMonth"></span><b id="calendarYear"></b></div>
+            <div class="calendar-week" id="calendarWeek"></div>
+            <div class="calendar-days" id="calendarDays"></div>
+          </div>
+        </div>
+        <div class="countdown reveal" id="countdown" aria-live="polite">
+          <p class="eyebrow" data-ui="countdownTitle">До нашей свадьбы осталось</p>
+          <div class="countdown-grid">
+            <div><strong id="countdownDays">0</strong><span data-ui="days">дней</span></div>
+            <div><strong id="countdownHours">0</strong><span data-ui="hours">часов</span></div>
+            <div><strong id="countdownMinutes">0</strong><span data-ui="minutes">минут</span></div>
+            <div><strong id="countdownSeconds">0</strong><span data-ui="seconds">секунд</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="program paper-section" id="programSection" style="--bg:url('assets/backgrounds/bg-05.jpg')">
+        <div class="section-heading reveal">
+          <p class="eyebrow" data-ui="programLabel">Этот особенный день</p>
+          <h2 class="display-title" data-ui="programTitle">Программа дня</h2>
+        </div>
+        <ol class="program-list" id="programList"></ol>
+      </section>
+
+      <section class="venue paper-section" id="venueSection" style="--bg:url('assets/backgrounds/bg-06.jpg')">
+        <div class="venue-card reveal">
+          <p class="eyebrow" data-ui="venueLabel">Место торжества</p>
+          <p class="venue-type" id="venueType"></p>
+          <h2 class="venue-name" id="venueName"></h2>
+          <div class="gold-divider" aria-hidden="true"><span></span><b>◆</b><span></span></div>
+          <p class="venue-address" id="venueAddress"></p>
+          <div class="map-actions" id="mapActions">
+            <a class="outline-button" id="googleMap" target="_blank" rel="noopener noreferrer" hidden>Google Maps</a>
+            <a class="outline-button" id="twoGisMap" target="_blank" rel="noopener noreferrer" hidden>2ГИС</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="rsvp paper-section" id="rsvpSection" style="--bg:url('assets/backgrounds/bg-07.jpg')" hidden>
+        <div class="rsvp-card reveal">
+          <p class="eyebrow" data-ui="answerLabel">Ваш ответ</p>
+          <h2 class="display-title" data-ui="rsvpTitle">Будете ли вы с нами?</h2>
+          <p class="body-copy rsvp-lead" data-ui="rsvpLead">Пожалуйста, подтвердите своё присутствие.</p>
+          <form class="rsvp-form" id="rsvpForm" novalidate>
+            <label class="field">
+              <span data-ui="nameLabel">Ваше имя</span>
+              <input id="guestName" name="name" type="text" autocomplete="name" maxlength="120" required>
+            </label>
+            <fieldset class="attendance-field">
+              <legend data-ui="attendanceLabel">Вы сможете прийти?</legend>
+              <label><input type="radio" name="attendance" value="yes" required><span data-ui="attendanceYes">Да, с радостью</span></label>
+              <label><input type="radio" name="attendance" value="no" required><span data-ui="attendanceNo">К сожалению, не смогу</span></label>
+            </fieldset>
+            <div class="field" id="guestCountField">
+              <span id="guestCountLabel" data-ui="guestCount">Количество гостей</span>
+              <div class="guest-picker" id="guestCountPicker">
+                <input id="guestCount" name="guests_count" type="hidden" value="1">
+                <button class="guest-picker-toggle" id="guestCountButton" type="button" aria-labelledby="guestCountLabel guestCountValue" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="guestCountValue">1</span>
+                  <span class="guest-picker-chevron" aria-hidden="true"></span>
+                </button>
+                <div class="guest-picker-options" id="guestCountOptions" role="listbox" aria-labelledby="guestCountLabel" hidden></div>
+              </div>
+            </div>
+            <label class="field" id="guestWishField">
+              <span data-ui="guestWish">Ваше пожелание</span>
+              <textarea id="guestWish" name="wish" rows="4" maxlength="600"></textarea>
+            </label>
+            <button class="submit-button" id="rsvpSubmit" type="submit" data-ui="submit">Подтвердить участие</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer paper-section paper-section--last" style="--bg:url('assets/backgrounds/bg-08.jpg')">
+      <div class="footer-inner reveal">
+        <p class="eyebrow" data-ui="withLove">С любовью</p>
+        <p class="footer-names" id="footerNames"></p>
+        <p class="footer-date" id="footerDate"></p>
+        <div class="footer-heart">♡</div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="language-switch" id="languageSwitch" hidden>
+    <div class="language-toggle" id="languageToggle">
+      <span class="paren" aria-hidden="true">(</span>
+      <button class="language-current" id="languageCurrent" type="button" aria-expanded="false" aria-controls="languageOptions">RU</button>
+      <div class="language-options" id="languageOptions" aria-label="Выбор языка"></div>
+      <span class="paren" aria-hidden="true">)</span>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
