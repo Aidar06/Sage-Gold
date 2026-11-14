@@ -28,7 +28,7 @@ for (const marker of ['fetchInvitationRaw', 'appendGuestToInvitation', 'Intersec
 const adapterUrl = pathToFileURL(path.join(root, 'backend-adapter.js')).href;
 const adapter = await import(`${adapterUrl}?check=${Date.now()}`);
 const sample = {
-  id: 3,
+  public_id: 'pub-3',
   languages: { enabled: ['ru', 'ky', 'kk'], default: 'ru' },
   names: { groom: 'Бекзат', bride: 'Алина' },
   date: '2027-06-12T16:30:00',

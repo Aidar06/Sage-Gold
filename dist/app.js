@@ -379,7 +379,7 @@ async function load() {
   }
   try {
     const raw = await fetchInvitationRaw(state.id);
-    if (!raw || typeof raw !== 'object' || (!raw.id && !raw.priglosi_id)) throw new InvitationApiError(404);
+    if (!raw || typeof raw !== 'object' || !raw.public_id) throw new InvitationApiError(404);
     state.raw = raw;
     state.invitation = normalizeInvitation(raw, state.id);
     const saved = storedLanguage();
